@@ -38,9 +38,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Readme.docx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

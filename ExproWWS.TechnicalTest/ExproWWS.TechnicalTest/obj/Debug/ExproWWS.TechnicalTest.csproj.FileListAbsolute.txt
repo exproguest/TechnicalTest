@@ -9,3 +9,9 @@ C:\Development\csharptechnicaltests\ExproWWS.TechnicalTest\ExproWWS.TechnicalTes
 C:\Development\csharptechnicaltests\ExproWWS.TechnicalTest\ExproWWS.TechnicalTest\obj\Debug\ExproWWS.TechnicalTest.csproj.CoreCompileInputs.cache
 C:\Development\csharptechnicaltests\ExproWWS.TechnicalTest\ExproWWS.TechnicalTest\obj\Debug\ExproWWS.TechnicalTest.dll
 C:\Development\csharptechnicaltests\ExproWWS.TechnicalTest\ExproWWS.TechnicalTest\obj\Debug\ExproWWS.TechnicalTest.pdb
+C:\Development\ExproWWS\TechnicalTest\ExproWWS.TechnicalTest\ExproWWS.TechnicalTest\bin\Debug\ExproWWS.TechnicalTest.dll
+C:\Development\ExproWWS\TechnicalTest\ExproWWS.TechnicalTest\ExproWWS.TechnicalTest\bin\Debug\ExproWWS.TechnicalTest.pdb
+C:\Development\ExproWWS\TechnicalTest\ExproWWS.TechnicalTest\ExproWWS.TechnicalTest\obj\Debug\ExproWWS.TechnicalTest.csprojResolveAssemblyReference.cache
+C:\Development\ExproWWS\TechnicalTest\ExproWWS.TechnicalTest\ExproWWS.TechnicalTest\obj\Debug\ExproWWS.TechnicalTest.csproj.CoreCompileInputs.cache
+C:\Development\ExproWWS\TechnicalTest\ExproWWS.TechnicalTest\ExproWWS.TechnicalTest\obj\Debug\ExproWWS.TechnicalTest.dll
+C:\Development\ExproWWS\TechnicalTest\ExproWWS.TechnicalTest\ExproWWS.TechnicalTest\obj\Debug\ExproWWS.TechnicalTest.pdb
