@@ -3,6 +3,7 @@
 //     Copyright (c) Expro North Sea Ltd. All rights reserved.
 // </copyright>
 // ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace ExproWWS.TechnicalTest
     public class RomanNumeral
     {
         private const string InvalidValue = "?";
+        private readonly int _integerValue;
         private readonly string _stringValue;
         private static readonly List<KeyValuePair<string, int>> _tokens;
 
@@ -32,7 +34,23 @@ namespace ExproWWS.TechnicalTest
         /// <param name="integerValue">Integer value to represent as a Roman numeral</param>
         public RomanNumeral(int integerValue)
         {
+            _integerValue = integerValue;
             _stringValue = ParseInteger(integerValue);
+        }
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="RomanNumeral"/> class
+        /// </summary>
+        /// <param name="stringValue">Roman numeral string</param>
+        public RomanNumeral(string stringValue)
+        {
+            if (string.IsNullOrEmpty(stringValue))
+            {
+                throw new ArgumentNullException(nameof(stringValue));
+            }
+
+            _stringValue = stringValue;
+            _integerValue = ParseString(stringValue);
         }
 
         /// <summary>
@@ -42,6 +60,15 @@ namespace ExproWWS.TechnicalTest
         public static implicit operator string(RomanNumeral r)
         {
             return r._stringValue;
+        }
+
+        /// <summary>
+        /// Converts a <see cref="RomanNumeral"/> object to an integer
+        /// </summary>
+        /// <param name="r">Roman Numeral object to convert</param>
+        public static implicit operator int(RomanNumeral r)
+        {
+            return r._integerValue;
         }
 
         /// <summary>
@@ -89,6 +116,38 @@ namespace ExproWWS.TechnicalTest
             }
 
             return romanNumeral.ToString();
+        }
+
+        /// <summary>
+        /// Parses a Roman numeral string to an integer value
+        /// </summary>
+        /// <param name="stringValue">Roman numeral string to parse</param>
+        /// <returns>Integer value of the Roman numeral string</returns>
+        private int ParseString(string stringValue)
+        {
+            int value = 0;
+            var orderedTokens = _tokens.OrderByDescending(t => t.Value).ToList();
+            while (stringValue.Length > 0)
+            {
+                bool foundToken = false;
+                foreach(var token in orderedTokens)
+                {
+                    if (stringValue.StartsWith(token.Key))
+                    {
+                        value += token.Value;
+                        stringValue = stringValue.Substring(token.Key.Length);
+                        foundToken = true;
+                        break;
+                    }
+                }
+
+                if (!foundToken)
+                {
+                    throw new ArgumentException($"{stringValue} cannot be parsed as a Roman numeral");
+                }
+            }
+
+            return value;
         }
     }
 }

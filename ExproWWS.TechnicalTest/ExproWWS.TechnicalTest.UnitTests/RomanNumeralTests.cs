@@ -4,6 +4,7 @@
 // </copyright>
 // ***********************************************************************
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace ExproWWS.TechnicalTest.UnitTests
 {
@@ -31,6 +32,42 @@ namespace ExproWWS.TechnicalTest.UnitTests
             var numeral = new RomanNumeral(integerValue);
             Assert.AreEqual(expectedNumeralValue, numeral, $"Integer value {integerValue} did not give the expected result.");
         }
-    
+
+        /// <summary>
+        /// Tests that when the <see cref="RomanNumeral"/> class is instantiated
+        /// with a string, it has the expected integer value
+        /// </summary>
+        /// <param name="stringValue">String value to use</param>
+        /// <param name="expectedIntegerValue">Integer value to expect</param>
+        [DataTestMethod]
+        [DataRow("DCXLVIII", 648)]
+        [DataRow("MMDXLIX", 2549)]
+        [DataRow("MCMXLIV", 1946)]
+        [DataRow("MCMXCIX", 1999)]
+        public void Can_Parse_Strings_Test(string stringValue, int expectedIntegerValue)
+        {
+            var numeral = new RomanNumeral(stringValue);
+            Assert.AreEqual(expectedIntegerValue, numeral, $"String value {stringValue} did not give the expected result.");
+        }
+        
+        /// <summary>
+        /// Tests that an exception is thrown if the <see cref="RomanNumeral"/> class
+        /// is instantiated with an invalid string
+        /// </summary>
+        [TestMethod]
+        public void Rejects_Invalid_String()
+        {
+            Assert.ThrowsException<ArgumentException>(() => new RomanNumeral("Q"));
+        }
+
+        /// <summary>
+        /// Tests that an exception is thrown if the <see cref="RomanNumeral"/> class
+        /// is instantiated with a null string
+        /// </summary>
+        [TestMethod]
+        public void Rejects_Null_String()
+        {
+            Assert.ThrowsException<ArgumentNullException>(() => new RomanNumeral(null));
+        }
     }
 }
