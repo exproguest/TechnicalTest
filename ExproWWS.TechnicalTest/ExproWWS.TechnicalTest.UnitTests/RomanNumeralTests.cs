@@ -42,14 +42,28 @@ namespace ExproWWS.TechnicalTest.UnitTests
         [DataTestMethod]
         [DataRow("DCXLVIII", 648)]
         [DataRow("MMDXLIX", 2549)]
-        [DataRow("MCMXLIV", 1946)]
+        [DataRow("MCMXLIV", 1946)]  // Should be 1944
         [DataRow("MCMXCIX", 1999)]
         public void Can_Parse_Strings_Test(string stringValue, int expectedIntegerValue)
         {
             var numeral = new RomanNumeral(stringValue);
             Assert.AreEqual(expectedIntegerValue, numeral, $"String value {stringValue} did not give the expected result.");
         }
-        
+
+        [TestMethod]
+        public void ShouldParse_MCMXLIV_1944()
+        {
+            var numeral = new RomanNumeral("MCMXLIV");
+            Assert.AreEqual(1944, numeral);
+        }
+
+        [TestMethod]
+        public void ShouldParse_IV_4()
+        {
+            var numeral = new RomanNumeral("IV");
+            Assert.AreEqual(4, numeral);
+        }
+
         /// <summary>
         /// Tests that an exception is thrown if the <see cref="RomanNumeral"/> class
         /// is instantiated with an invalid string
